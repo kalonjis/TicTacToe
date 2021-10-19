@@ -27,9 +27,6 @@ document.querySelectorAll(".case").forEach(cell => cell.addEventListener('click'
 
 document.querySelector('#recommencer').addEventListener('click', recommencer);
 
-function recommencer(){
-    console.log("recommencer")
-}
 
 function gestionClicCase() {
     //On récupère l'index de la case cliquée
@@ -78,4 +75,13 @@ function verifGagne(){
     joueurActif = joueurActif=="X"? "O":"X"
     statut.innerHTML = tourJoueur()
     
+}
+
+function recommencer(){
+    jeuActif = true;
+    joueurActif = joueurActif=="X"? "O":"X";
+    statut.innerHTML = tourJoueur();
+    etatJeu = ["", "", "", "", "", "", "", "", ""];
+    document.querySelectorAll(".case").forEach(cell => cell.innerHTML = "");
+
 }
