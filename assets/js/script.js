@@ -28,9 +28,19 @@ document.querySelectorAll(".case").forEach(cell => cell.addEventListener('click'
 document.querySelector('#recommencer').addEventListener('click', recommencer);
 
 function gestionClicCase() {
+    //On récupère l'index de la case cliquée
     const indexCase = parseInt(this.dataset.index)
-    console.log(indexCase)
+    
+    if(etatJeu[indexCase] !== "" || !jeuActif){
+        return
+    }
+    //On enregistre et on affiche le clic du joueur
+    etatJeu[indexCase] = this.innerHTML = joueurActif;
+    console.log(etatJeu)
+    
+
 }
+
 function recommencer(){
     console.log("recommencer")
 }
