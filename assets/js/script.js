@@ -17,7 +17,7 @@ const conditionsVictoire = [
 
 //Messages
 const gagne = () =>`Lejoueur ${joueurActif} a gagné`;
-const egalité = () => "Egalité";
+const egalite = () => "Egalité";
 const tourJoueur = () => `c'est au tour du joueur ${joueurActif}`;
 
 statut.innerHTML = tourJoueur();
@@ -61,9 +61,18 @@ function verifGagne(){
             break;
         }
     };
+    //Cas gagnant
     if(tourGagnant){
         statut.innerHTML = gagne();
         jeuActif = false;
         return
     }
+    //Cas d'égalité
+    if(!etatJeu.includes("")){
+        statut.innerHTML = egalite()
+        jeuActif = false;
+        return
+    }
+
+    
 }
