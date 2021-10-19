@@ -28,7 +28,8 @@ document.querySelectorAll(".case").forEach(cell => cell.addEventListener('click'
 document.querySelector('#recommencer').addEventListener('click', recommencer);
 
 function gestionClicCase() {
-    console.log(this)
+    const indexCase = parseInt(this.dataset.index)
+    console.log(indexCase)
 }
 function recommencer(){
     console.log("recommencer")
