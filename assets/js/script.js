@@ -27,20 +27,43 @@ document.querySelectorAll(".case").forEach(cell => cell.addEventListener('click'
 
 document.querySelector('#recommencer').addEventListener('click', recommencer);
 
+function recommencer(){
+    console.log("recommencer")
+}
+
 function gestionClicCase() {
     //On récupère l'index de la case cliquée
-    const indexCase = parseInt(this.dataset.index)
+    const indexCase = parseInt(this.dataset.index);
     
     if(etatJeu[indexCase] !== "" || !jeuActif){
         return
     }
     //On enregistre et on affiche le clic du joueur
     etatJeu[indexCase] = this.innerHTML = joueurActif;
-    console.log(etatJeu)
     
+    verifGagne();
 
 }
 
-function recommencer(){
-    console.log("recommencer")
+function verifGagne(){
+    let tourGagnant = false;
+
+    for (let conditionsVictoir of conditionsVictoire){
+        let val1 = etatJeu[conditionsVictoir[0]];
+        let val2 = etatJeu[conditionsVictoir[1]];
+        let val3 = etatJeu[conditionsVictoir[2]];
+        
+        if(val1 === ""|| val2 === ""|| val3 === ""){
+            continue;
+        }
+        if(val1===val2 && val2 === val3){
+            tourGagnant = true;
+            break;
+        }
+    };
+    if(tourGagnant){
+        statut.innerHTML = gagne();
+        jeuActif = false;
+        return
+    }
 }
